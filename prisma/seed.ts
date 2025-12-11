@@ -1,0 +1,278 @@
+import { PrismaClient } from '@prisma/client'
+import { hash } from 'bcryptjs'
+import { nanoid } from 'nanoid'
+
+const prisma = new PrismaClient()
+
+async function main() {
+  console.log('🌱 Starting seed...')
+
+  // Create admin user
+  const hashedPassword = await hash('demo123', 10)
+  const admin = await prisma.user.upsert({
+    where: { email: 'admin@kingkidd.com' },
+    update: {},
+    create: {
+      email: 'admin@kingkidd.com',
+      password: hashedPassword,
+      name: 'Admin User',
+      role: 'admin',
+    },
+  })
+  console.log('✅ Admin user created:', admin.email)
+
+  // Create sample clients with passwords
+  const clientPassword = await hash('client123', 10)
+  const clients = await Promise.all([
+    prisma.client.upsert({
+      where: { email: 'john.doe@example.com' },
+      update: {},
+      create: {
+        name: 'John Doe',
+        email: 'john.doe@example.com',
+        phone: '+254712345678',
+        password: clientPassword,
+        whatsapp: '+254712345678',
+      },
+    }),
+    prisma.client.upsert({
+      where: { email: 'sarah.wilson@example.com' },
+      update: {},
+      create: {
+        name: 'Sarah Wilson',
+        email: 'sarah.wilson@example.com',
+        phone: '+254723456789',
+        password: clientPassword,
+        whatsapp: '+254723456789',
+      },
+    }),
+    prisma.client.upsert({
+      where: { email: 'michael.brown@example.com' },
+      update: {},
+      create: {
+        name: 'Michael Brown',
+        email: 'michael.brown@example.com',
+        phone: '+254734567890',
+        password: clientPassword,
+        whatsapp: '+254734567890',
+      },
+    }),
+    prisma.client.upsert({
+      where: { email: 'emily.davis@example.com' },
+      update: {},
+      create: {
+        name: 'Emily Davis',
+        email: 'emily.davis@example.com',
+        phone: '+254745678901',
+        password: clientPassword,
+        whatsapp: '+254745678901',
+      },
+    }),
+    prisma.client.upsert({
+      where: { email: 'james.taylor@example.com' },
+      update: {},
+      create: {
+        name: 'James Taylor',
+        email: 'james.taylor@example.com',
+        phone: '+254756789012',
+        password: clientPassword,
+        whatsapp: '+254756789012',
+      },
+    }),
+  ])
+  console.log(`✅ Created ${clients.length} clients`)
+
+  // Create sample projects
+  const projects = [
+    {
+      name: 'Wedding Photo Album - John & Jane',
+      contentLink: 'https://drive.google.com/albums/wedding-2024',
+      password: nanoid(12),
+      price: 15000,
+      photoCount: 250,
+      status: 'delivered',
+      clientId: clients[0].id,
+    },
+    {
+      name: 'Corporate Event Coverage',
+      contentLink: 'https://drive.google.com/albums/corporate-event',
+      password: nanoid(12),
+      price: 25000,
+      photoCount: 180,
+      status: 'paid',
+      clientId: clients[1].id,
+    },
+    {
+      name: 'Birthday Party Photography',
+      contentLink: 'https://drive.google.com/albums/birthday-bash',
+      password: nanoid(12),
+      price: 8000,
+      photoCount: 120,
+      status: 'pending',
+      clientId: clients[2].id,
+    },
+    {
+      name: 'Pre-Wedding Photoshoot',
+      contentLink: 'https://drive.google.com/albums/pre-wedding',
+      password: nanoid(12),
+      price: 12000,
+      photoCount: 95,
+      status: 'pending',
+      clientId: clients[3].id,
+    },
+    {
+      name: 'Product Photography Session',
+      contentLink: 'https://drive.google.com/albums/product-photos',
+      password: nanoid(12),
+      price: 18000,
+      photoCount: 60,
+      status: 'paid',
+      clientId: clients[4].id,
+    },
+    {
+      name: 'Family Portrait Session',
+      contentLink: 'https://drive.google.com/albums/family-portraits',
+      password: nanoid(12),
+      price: 10000,
+      photoCount: 80,
+      status: 'delivered',
+      clientId: clients[0].id,
+    },
+    {
+      name: 'Real Estate Photography',
+      contentLink: 'https://drive.google.com/albums/real-estate',
+      password: nanoid(12),
+      price: 20000,
+      photoCount: 45,
+      status: 'pending',
+      clientId: clients[1].id,
+    },
+    {
+      name: 'Graduation Ceremony Photos',
+      contentLink: 'https://drive.google.com/albums/graduation',
+      password: nanoid(12),
+      price: 7500,
+      photoCount: 150,
+      status: 'paid',
+      clientId: clients[2].id,
+    },
+    // Additional pending projects for John Doe for demo payment flow
+    {
+      name: 'John Doe - Mini Session A',
+      contentLink: 'https://drive.google.com/albums/john-mini-a',
+      password: nanoid(12),
+      price: 3000,
+      photoCount: 30,
+      status: 'pending',
+      clientId: clients[0].id,
+    },
+    {
+      name: 'John Doe - Mini Session B',
+      contentLink: 'https://drive.google.com/albums/john-mini-b',
+      password: nanoid(12),
+      price: 3200,
+      photoCount: 35,
+      status: 'pending',
+      clientId: clients[0].id,
+    },
+    {
+      name: 'John Doe - Family Reunion',
+      contentLink: 'https://drive.google.com/albums/john-family-reunion',
+      password: nanoid(12),
+      price: 12000,
+      photoCount: 120,
+      status: 'pending',
+      clientId: clients[0].id,
+    },
+    {
+      name: 'John Doe - Maternity Shoot',
+      contentLink: 'https://drive.google.com/albums/john-maternity',
+      password: nanoid(12),
+      price: 7000,
+      photoCount: 60,
+      status: 'pending',
+      clientId: clients[0].id,
+    },
+    {
+      name: 'John Doe - Baby Portraits',
+      contentLink: 'https://drive.google.com/albums/john-baby',
+      password: nanoid(12),
+      price: 4500,
+      photoCount: 40,
+      status: 'pending',
+      clientId: clients[0].id,
+    },
+  ]
+
+  for (const project of projects) {
+    await prisma.project.create({
+      data: project,
+    })
+  }
+  console.log(`✅ Created ${projects.length} projects`)
+
+  // Create sample payments
+  const allProjects = await prisma.project.findMany()
+  const paidProjects = allProjects.filter((p) => p.status === 'paid' || p.status === 'delivered')
+
+  for (const project of paidProjects) {
+    await prisma.payment.create({
+      data: {
+        projectId: project.id,
+        amount: project.price,
+        method: ['mpesa', 'paypal', 'bank'][Math.floor(Math.random() * 3)],
+        status: 'confirmed',
+        transactionRef: `TXN${nanoid(8)}`,
+        confirmedAt: new Date(),
+      },
+    })
+  }
+  console.log(`✅ Created ${paidProjects.length} payments`)
+
+  // Create sample delivery logs
+  const deliveredProjects = allProjects.filter((p) => p.status === 'delivered')
+  
+  for (const project of deliveredProjects) {
+    // Email delivery
+    await prisma.deliveryLog.create({
+      data: {
+        projectId: project.id,
+        method: 'email',
+        status: 'sent',
+        message: 'Password sent via email',
+      },
+    })
+    
+    // SMS delivery
+    await prisma.deliveryLog.create({
+      data: {
+        projectId: project.id,
+        method: 'sms',
+        status: 'sent',
+        message: 'Password sent via SMS',
+      },
+    })
+    
+    // WhatsApp delivery
+    await prisma.deliveryLog.create({
+      data: {
+        projectId: project.id,
+        method: 'whatsapp',
+        status: 'sent',
+        message: 'Password sent via WhatsApp',
+      },
+    })
+  }
+  console.log(`✅ Created delivery logs`)
+
+  console.log('🎉 Seed completed successfully!')
+}
+
+main()
+  .catch((e) => {
+    console.error('❌ Seed failed:', e)
+    process.exit(1)
+  })
+  .finally(async () => {
+    await prisma.$disconnect()
+  })
