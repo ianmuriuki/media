@@ -4,47 +4,51 @@
 ![Next.js](https://img.shields.io/badge/Next.js-14+-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue)
 
-## 🎯 Overview
+## Overview
 
 A complete demo web application for **MediaPay** ("Stories That Connect") that automates password delivery to clients after payment confirmation. This system eliminates manual password management and ensures instant, reliable delivery through multiple channels.
 
-## 🌟 Key Features
+![alt text](user-portal.png)
+
+![alt text](admin-dsh.png)
+
+##  Key Features
 
 ### Authentication & Security
-- ✅ Secure admin login with NextAuth.js
-- ✅ Protected dashboard routes with middleware
-- ✅ Auto-generated 12-character secure passwords using nanoid
-- ✅ Demo credentials: `admin@kingkidd.com` / `demo123`
+-  Secure admin login with NextAuth.js
+-  Protected dashboard routes with middleware
+- Auto-generated 12-character secure passwords using nanoid
+-  Demo credentials: `admin@kingkidd.com` / `demo123`
 
 ### Project Management
-- ✅ Create and manage photography projects
-- ✅ Assign projects to clients
-- ✅ Auto-generate secure passwords for content links
-- ✅ Track project status (Pending → Paid → Delivered)
+-  Create and manage photography projects
+-  Assign projects to clients
+-  Auto-generate secure passwords for content links
+-  Track project status (Pending → Paid → Delivered)
 
 ### Client Management
-- ✅ Add and manage client information
-- ✅ Store email, phone, and WhatsApp contacts
-- ✅ View client project history
+-  Add and manage client information
+-  Store email, phone, and WhatsApp contacts
+-  View client project history
 
 ### Payment Tracking (Simulated)
-- ✅ Simulate payments via M-Pesa, PayPal, and Bank Transfer
-- ✅ One-click payment confirmation
-- ✅ Real-time status updates
+-  Simulate payments via M-Pesa, PayPal, and Bank Transfer
+-  One-click payment confirmation
+-  Real-time status updates
 
 ### Automated Password Delivery (Simulated)
-- ✅ **Automatic** password delivery on payment confirmation
-- ✅ Multi-channel delivery (Email, SMS, WhatsApp)
-- ✅ Instant delivery simulation
-- ✅ Complete delivery logs and tracking
+-  **Automatic** password delivery on payment confirmation
+-  Multi-channel delivery (Email, SMS, WhatsApp)
+-  Instant delivery simulation
+-  Complete delivery logs and tracking
 
 ### Dashboard & Analytics
-- ✅ Overview statistics
-- ✅ Recent activity feed
-- ✅ Payment tracking
-- ✅ Delivery logs with filtering
+-  Overview statistics
+-  Recent activity feed
+-  Payment tracking
+-  Delivery logs with filtering
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - Node.js 18+ installed
@@ -54,8 +58,8 @@ A complete demo web application for **MediaPay** ("Stories That Connect") that a
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/noraibaneznu-stack/Kingphotography2.git
-cd Kingphotography2
+git clone https://github.com/ianmuriuki/media.git
+cd media
 ```
 
 2. Install dependencies:
@@ -83,7 +87,7 @@ http://localhost:3000
 - **Email:** admin@kingkidd.com
 - **Password:** demo123
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 /
@@ -116,7 +120,7 @@ http://localhost:3000
     └── globals.css            # Global styles
 ```
 
-## 🎨 Tech Stack
+##  Tech Stack
 
 - **Frontend:** Next.js 14+ with App Router, React 18, TypeScript
 - **Styling:** Tailwind CSS with custom color scheme
@@ -126,7 +130,7 @@ http://localhost:3000
 - **Notifications:** React Hot Toast
 - **Icons:** Lucide React
 
-## 🎨 Color Scheme
+##  Color Scheme
 
 - **Primary:** Sky Blue (#0EA5E9) - Main brand color
 - **Secondary:** White (#FFFFFF) - Clean background
@@ -134,7 +138,7 @@ http://localhost:3000
 - **Warning:** Yellow - Demo mode indicators
 - **Danger:** Red - Delete actions
 
-## 📊 Database Schema
+##  Database Schema
 
 ### Models
 - **User:** Admin authentication
@@ -143,7 +147,7 @@ http://localhost:3000
 - **Payment:** Payment tracking records
 - **DeliveryLog:** Password delivery history
 
-## 🔄 Workflow
+##  Workflow
 
 ### Current Manual Process (Before)
 1. Share content link with client
@@ -160,14 +164,14 @@ http://localhost:3000
    - Sends password via Email, SMS, and WhatsApp
    - Marks project as delivered
 
-## 🎭 Demo Mode
+##  Demo Mode
 
 This is a **DEMONSTRATION** application. All payment processing and message delivery are **SIMULATED**:
 
-- ✅ Payment buttons simulate instant payment confirmation
-- ✅ Delivery notifications show simulated Email/SMS/WhatsApp sends
-- ✅ No real money is processed
-- ✅ No real messages are sent
+-  Payment buttons simulate instant payment confirmation
+-  Delivery notifications show simulated Email/SMS/WhatsApp sends
+-  No real money is processed
+-  No real messages are sent
 
 ### For Production Use
 To use in production, integrate:
@@ -176,7 +180,7 @@ To use in production, integrate:
 - **SMS Service:** Twilio, Africa's Talking
 - **WhatsApp:** WhatsApp Business API
 
-## 📝 Sample Data
+##  Sample Data
 
 The seed script includes:
 - 1 admin user
@@ -185,7 +189,7 @@ The seed script includes:
 - 5 completed payments
 - Multiple delivery logs
 
-## 🔧 Development
+##  Development
 
 ### Available Scripts
 
@@ -207,11 +211,11 @@ NEXTAUTH_SECRET=your-secret-key-here
 NEXTAUTH_URL=http://localhost:3000
 ```
 
-## 🎯 Key Features Demonstrated
+##  Key Features Demonstrated
 
 ### Problem Solved
-- ❌ **Before:** Manual password delivery, delays, human error, scalability issues
-- ✅ **After:** Instant automated delivery, no human intervention, 100% reliable, infinitely scalable
+-  **Before:** Manual password delivery, delays, human error, scalability issues
+-  **After:** Instant automated delivery, no human intervention, 100% reliable, infinitely scalable
 
 ### Automation Benefits
 - **Instant Delivery:** No waiting for manual intervention
@@ -220,24 +224,8 @@ NEXTAUTH_URL=http://localhost:3000
 - **Scalable:** Handle unlimited projects
 - **Professional:** Consistent, timely communication
 
-## 📱 Screenshots
 
-### Login Page
-Clean, branded login with demo mode indicator
-
-### Dashboard
-Overview stats, recent projects, and delivery logs
-
-### Projects Management
-Create, view, and manage projects with auto-generated passwords
-
-### Payment Simulation
-One-click payment confirmation with instant password delivery
-
-### Delivery Logs
-Complete history of all password deliveries
-
-## 🚀 Deployment
+##  Deployment
 
 ### Vercel (Recommended)
 
@@ -257,7 +245,7 @@ Start production server:
 npm start
 ```
 
-## 🔒 Security Notes
+##  Security Notes
 
 - Passwords are hashed with bcrypt
 - Session management via JWT
@@ -265,18 +253,11 @@ npm start
 - SQL injection prevention via Prisma
 - Input validation on all forms
 
-## 📄 License
 
-This is a demo/portfolio project for MediaPay.
 
-## 👤 Contact
+##  Contact
 
-**MediaPay**  
-*Stories That Connect*
 
-- Website: www.mediapay.com
-- Email: info@mediapay.com
-- Location: Nairobi, Kenya
 
 ---
 
